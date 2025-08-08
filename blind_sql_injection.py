@@ -4,8 +4,8 @@ from urllib.parse import urljoin
 import requests
 
 class Solver:
-    def __init__(self, address: str) -> None:
-        self._index_url = address
+    def __init__(self, url: str) -> None:
+        self._index_url = url
         self._login_url = urljoin(self._index_url, 'login')
     
     def _login(self, uid: str, upw: str) -> requests.Response:
@@ -71,8 +71,8 @@ class Solver:
         
 
 if __name__ == '__main__':
-    address = sys.argv[1]
+    url = sys.argv[1]
     uid = sys.argv[2]
 
-    solver = Solver(address)
+    solver = Solver(url)
     solver.solve(uid)
